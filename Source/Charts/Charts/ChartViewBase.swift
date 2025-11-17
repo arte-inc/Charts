@@ -13,8 +13,12 @@
 import Foundation
 import CoreGraphics
 
-#if !os(OSX)
-    import UIKit
+#if canImport(UIKit)
+import UIKit
+#endif
+
+#if canImport(AppKit)
+import AppKit
 #endif
 
 @objc
@@ -452,7 +456,7 @@ open class ChartViewBase: NSUIView, ChartDataProvider, AnimatorDelegate
         }
 
         // set the indices to highlight
-       highlighted = [h]
+        highlighted = [h]
 
         if callDelegate
         {
